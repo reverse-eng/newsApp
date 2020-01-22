@@ -1,5 +1,8 @@
 import React from 'react';
-import { Loader} from 'semantic-ui-react'
+import Navigation from './Navigation';
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "shards-ui/dist/css/shards.min.css"
 
 import ListNewsCards from './components/list-news-cards/ListNewsCards';
 import Utility from './utilities/utility';
@@ -39,9 +42,13 @@ class App extends React.Component {
     const { isLoading, newsArticles } = this.state;
     
     return (
-      <div className="App">
-        {isLoading ? <Loader /> : <ListNewsCards newsArticles={newsArticles} />}
-      </div>
+      <div>
+        <Navigation />
+          {isLoading ? <div> ...Loading </div> : <ListNewsCards newsArticles={newsArticles} />}
+        </div>
+        
+       
+      
     );
 
   }

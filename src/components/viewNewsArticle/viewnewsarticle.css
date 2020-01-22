@@ -1,0 +1,18 @@
+.back-arrow {
+    font-size: 2.5em;
+}
+.img-col{
+    overflow: hidden;
+}
+.news-art-img{
+    max-width: 100%;
+}
+
+.article-title {
+    font-size: 2em;
+}
+@media (max-width: 500px){
+    .article-title {
+        font-size: 1.5em;
+    }
+}

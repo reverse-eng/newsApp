@@ -6,6 +6,9 @@
 .ui-news-card:first-child {
    margin: 1em .5em 1em .5em !important
 }
+.ui-news-card-image {
+    max-width: 100%;
+}
 
 .ui.card > .image {
     max-height: 192px;
@@ -22,7 +25,7 @@
 
 @media  (min-width: 720px){
     .ui-news-card {
-        width: 290px !important;
+        width: 400px !important;
     }
     .ui.card > .image {
         max-height: 300px;

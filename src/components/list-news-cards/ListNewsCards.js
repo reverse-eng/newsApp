@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import NewsCard from '../news-card/NewsCard';
+import ViewNewsArticle from '../viewNewsArticle/ViewNewsArticle'
 import './listnewscards.css';
 
 const formatDate = (utcDate) =>{
@@ -15,10 +16,14 @@ const formatDate = (utcDate) =>{
 }
 
 const NewsCards = (props) => {
+    
+
     return (
         props.newsArticles.map((newsItem, index) => 
             <NewsCard 
             key={index}
+            article={newsItem}
+            clicked={props.ArticleClicked}
             imageSource = {newsItem.urlToImage}
             title = {newsItem.title}
             date = {formatDate(newsItem.publishedAt)}
@@ -31,23 +36,27 @@ const NewsCards = (props) => {
     )
 }
 
-const viewNewsArticle = () => {
-    
-    return(
-        <h1 >News Article Selelcted</h1>
-    )
-}
 
-const handleArticleClicked = (e) => {
-    e.preventDefault();
-    console.log("Clicked: ", e)
-}
+
+
 const ListNewsCards = (props) => {
-    const {selectedArticle, setSelectedArticle} = useState('');
+    const [selectedArticle, setSelectedArticle] = useState('');
+
+    const handleArticleClicked = (article) => {
+        setSelectedArticle({article});
+    }
+    const handleBackButtonFromArt = () =>{
+        setSelectedArticle('');
+    }
+   
 
     return (
           <div className="flex-wrapper"> 
-            <NewsCards newsArticles={props.newsArticles} />
+            {
+                selectedArticle === '' ? 
+                    <NewsCards newsArticles={props.newsArticles} ArticleClicked={handleArticleClicked} />
+                :   < ViewNewsArticle Article={selectedArticle} BackButton={handleBackButtonFromArt} />
+            }
           </div>
           );
 
