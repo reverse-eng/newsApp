@@ -1,0 +1,13 @@
+.flex-wrapper{
+    width: 98%;
+    margin: 0px auto; 
+    display: flex;
+    flex-wrap: wrap;
+  }
+ 
+@media (max-width: 500px){
+    .flex-wrapper{
+        display: block;
+        max-width: 500px;
+    }
+}

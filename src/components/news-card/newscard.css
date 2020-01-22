@@ -1,0 +1,31 @@
+.ui-news-card {
+    display: inline-flex !important;
+    min-height: 370px !important;
+    margin: 1em .5em !important;
+}
+.ui-news-card:first-child {
+   margin: 1em .5em 1em .5em !important
+}
+
+.ui.card > .image {
+    max-height: 192px;
+    overflow: hidden;
+}
+@media  (min-width: 400px){
+    .ui-news-card {
+        width: auto !important ;
+    }
+    .ui.card > .image {
+        max-height: 200px;
+    }
+}
+
+@media  (min-width: 720px){
+    .ui-news-card {
+        width: 290px !important;
+    }
+    .ui.card > .image {
+        max-height: 300px;
+    }
+}
+
