@@ -1,60 +1,33 @@
 import React from 'react';
-import Navigation from './Navigation';
+import {
+  Switch,
+  Route
+} from "react-router-dom";
 
+import Home from './containers/Home';
+import Layout from './containers/Layout';
+import UKNews from './containers/UKNews';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
 
-import ListNewsCards from './components/list-news-cards/ListNewsCards';
-import Utility from './utilities/utility';
 import './App.css';
 
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isLoading: true,
-      name: null,
-      avatar: null,
-      email: null,
-      newsArticles: {}
-    };
-  }
-  async componentDidMount() {
-    const newsData = await Utility.get('/', {
-      params: {
-        results: 1,
-        country: 'us'
-      }
-    });
-        const newsArticles = newsData.data.articles;
-
-        this.setState({
-          ...this.state, ...{
-            newsArticles,
-            isLoading: false
-          }
-        })
-  }
-
-  render() {
-    const { isLoading, newsArticles } = this.state;
-    
-    return (
-      <div>
-        <Navigation />
-       
-          {isLoading ? <div> ...Loading </div> : <ListNewsCards newsArticles={newsArticles} />}
-        </div>
+const App = () => {
+  return(
+    <Layout >
+      <Switch>
         
-       
-      
-    );
+        <Route path="/country/:id">
+          <UKNews />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+        
+      </Switch>
+      </Layout>
 
-  }
-
-  
+  )
 }
 
 export default App;

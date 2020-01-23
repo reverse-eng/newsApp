@@ -1,29 +1,41 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import Utility from '../utilities/utility';
+import { useParams} from 'react-router-dom';
+
+import ListNewsCards from '../components/list-news-cards/ListNewsCards';
+
 
 const UKNews = () => {
     const [newsReady, setNewsReady] = useState(false);
+    const news = {};
+    const {id} = useParams();
+    const loadedNews = useRef(news);
     useEffect(()=>{
-        let ukNews = {}
+        
             async function getData(){
-                ukNews = await Utility.get('/', {
+                loadedNews.current = await Utility.get('/', {
                     params: {
                       results: 1,
-                      country: 'gb'
+                      country: id
                     }
                   });
-                console.log(ukNews)
-                setNewsReady(ukNews.data.articles)
+                
             }
-            getData();
-            
+            getData().then(()=> {   
+                setNewsReady(true);  
+            });
+                
                 //const newsArticles = ukNews.data.articles;
                 //console.log(newsArticles)
             
-    },[])
+    },[id])
+    
+    console.log("[UKNEWS] - ",id);
 
     return (
-        <h1>News Ready For Display</h1>
+        <div>
+            {!newsReady ? <div> ...Loading </div> : <ListNewsCards newsArticles={loadedNews.current.data.articles} />}
+        </div>
     )
 }
 

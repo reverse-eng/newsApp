@@ -4,8 +4,6 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
-  NavLink,
   Dropdown,
   DropdownToggle,
   DropdownMenu,
@@ -31,8 +29,9 @@ export default class Navigation extends React.Component {
       dropdownOpen: false,
       collapseOpen: false
     };
+    
   }
-
+  
   toggleDropdown() {
     this.setState({
       ...this.state,
@@ -50,25 +49,21 @@ export default class Navigation extends React.Component {
       }
     });
   }
-
+  
   render() {
+    
     return (
       <Navbar type="dark" theme="danger" expand="md">
-        <NavbarBrand href="#">NEWS-SMASH</NavbarBrand>
+        
+          <NavbarBrand href="/">
+          NEWS-SMASH
+          
+          </NavbarBrand>
+        
         <NavbarToggler onClick={this.toggleNavbar} />
 
         <Collapse open={this.state.collapseOpen} navbar>
           <Nav navbar>
-            <NavItem>
-              <NavLink active href="#">
-                Top News
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="#" disabled>
-                Disabled
-              </NavLink>
-            </NavItem>
             <Dropdown
               open={this.state.dropdownOpen}
               toggle={this.toggleDropdown}
@@ -77,9 +72,10 @@ export default class Navigation extends React.Component {
                 Country
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem>UK</DropdownItem>
-                <DropdownItem>Bolivia</DropdownItem>
-                <DropdownItem>France</DropdownItem>
+                <DropdownItem href="/country/gb">Uk</DropdownItem>
+                
+                <DropdownItem href="/country/ve">Venuzuela</DropdownItem>
+                <DropdownItem href="/country/fr">France</DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </Nav>
