@@ -4,6 +4,17 @@
     display: flex;
     flex-wrap: wrap;
   }
+  
+  .news-articles-exit {
+    margin-left: 0px;
+    opacity: 0;
+  }
+  .news-articles-exit-active {
+    margin-left: -2000px;
+    transition: all 7s ease-out ;
+    opacity: 1;
+  }
+
  
 @media (max-width: 500px){
     .flex-wrapper{

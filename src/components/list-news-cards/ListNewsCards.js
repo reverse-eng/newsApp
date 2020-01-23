@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {CSSTransition} from 'react-transition-group';
+
 import NewsCard from '../news-card/NewsCard';
 import ViewNewsArticle from '../viewNewsArticle/ViewNewsArticle'
 import './listnewscards.css';
@@ -19,9 +21,13 @@ const NewsCards = (props) => {
     
 
     return (
-        props.newsArticles.map((newsItem, index) => 
+        
+        props.newsArticles.map((newsItem, index) =>
+        
+       
             <NewsCard 
             key={index}
+            inProp={props.inProp}
             article={newsItem}
             clicked={props.ArticleClicked}
             imageSource = {newsItem.urlToImage}
@@ -32,7 +38,11 @@ const NewsCards = (props) => {
             url = {newsItem.url}
             
             />
-          )
+        
+            
+        )
+        
+    
     )
 }
 
@@ -41,23 +51,37 @@ const NewsCards = (props) => {
 
 const ListNewsCards = (props) => {
     const [selectedArticle, setSelectedArticle] = useState('');
+    const [inProp, setInProp] = useState(false);
 
     const handleArticleClicked = (article) => {
         setSelectedArticle({article});
+        setInProp(false)
     }
     const handleBackButtonFromArt = () =>{
         setSelectedArticle('');
+        setInProp(false)
     }
-   
+   setTimeout(()=>setInProp(true),200 )
 
     return (
+        <CSSTransition 
+        in={inProp}
+        timeout={700}
+        mountOnEnter
+        classNames="news-articles"
+        >
           <div className="flex-wrapper"> 
-            {
-                selectedArticle === '' ? 
+                
+           
+                
+                 {selectedArticle === '' ? 
                     <NewsCards newsArticles={props.newsArticles} ArticleClicked={handleArticleClicked} />
-                :   < ViewNewsArticle Article={selectedArticle} BackButton={handleBackButtonFromArt} />
-            }
-          </div>
+                :   
+                    < ViewNewsArticle Article={selectedArticle} BackButton={handleBackButtonFromArt} />
+                }
+                </div>
+           </CSSTransition>
+          
           );
 
   }

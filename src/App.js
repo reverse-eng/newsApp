@@ -44,6 +44,7 @@ class App extends React.Component {
     return (
       <div>
         <Navigation />
+       
           {isLoading ? <div> ...Loading </div> : <ListNewsCards newsArticles={newsArticles} />}
         </div>
         

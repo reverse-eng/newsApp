@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {CSSTransition} from 'react-transition-group';
 import {
   Card,
   CardTitle,
@@ -10,7 +11,15 @@ import {
 
 import "./newscard.css"
 
-const NewsCard = (props) => (
+const NewsCard = (props) => {
+  const [inProp, setInProp] = useState(false);
+  setTimeout(()=>setInProp(true), 200)
+  return (
+  <CSSTransition 
+  timeout={1000}
+  in={inProp}
+  unmountOnExit
+  classNames='item'>
   <Card className="ui-news-card">
     <CardImg className="ui-news-card-image"src={props.imageSource} />
     <CardBody>
@@ -27,6 +36,7 @@ const NewsCard = (props) => (
       </a>
     </CardFooter>
   </Card>
-)
+  </CSSTransition>)
+}
 
-export default NewsCard
+export default NewsCard;
