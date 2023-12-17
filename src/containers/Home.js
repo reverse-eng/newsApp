@@ -18,10 +18,11 @@ class Home extends React.Component {
     };
   }
   async componentDidMount() {
-    const newsData = await Utility.get('/', {
+    const newsData = await Utility.get('/top-headlines', {
       params: {
         results: 1,
-        country: 'us'
+        country: 'us',
+        apiKey: 'a9cd0a05f40f476d8bca878cdbac8330'
       }
     });
         const newsArticles = newsData.data.articles;
