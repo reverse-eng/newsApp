@@ -32,6 +32,9 @@ const ViewNewsArticle = (props) => {
                 {Article.article.content}
                 
             </Row>
+            <Row>
+                <a href={Article.article.url}>Read full story at {Article.article?.source?.source?.name}</a>
+            </Row>
 
             <Button onClick={props.BackButton} theme="dark"> <span className="back-arrow"> &larr;</span></Button>
         </Container>
