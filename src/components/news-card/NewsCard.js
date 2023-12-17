@@ -28,7 +28,10 @@ const NewsCard = (props) => {
         <span className={props.postDate}>{props.date}</span>
       </div>
       <p className="card-descrition">{props.description}</p>
-      <Button onClick={()=> props.clicked(props.article)}>Read more &rarr; </Button>
+      <Button onClick={()=> 
+        // props.clicked(props.article)
+        window.open(props.url, '_blank')
+        }>Read more &rarr; </Button>
     </CardBody>
     <CardFooter>
       <a href={props.url}>
