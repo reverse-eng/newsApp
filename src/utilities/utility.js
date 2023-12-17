@@ -7,6 +7,6 @@ export default axios.create({
       'Access-Control-Allow-Origin': '*',
       "Access-Control-Allow-Methods": "GET,HEAD,POST,OPTIONS",
       "Access-Control-Max-Age": "86400",
-        mode: 'no-cors',
+      "X-Api-Key": "a9cd0a05f40f476d8bca878cdbac8330"
     }
   });
