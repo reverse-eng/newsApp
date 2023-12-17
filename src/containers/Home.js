@@ -18,7 +18,7 @@ class Home extends React.Component {
     };
   }
   async componentDidMount() {
-    const newsData = await Utility.get('/');
+    const newsData = await Utility.get('/articles');
         const newsArticles = newsData.data.articles;
 
         this.setState({
