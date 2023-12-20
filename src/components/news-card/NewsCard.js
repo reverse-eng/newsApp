@@ -35,7 +35,7 @@ const NewsCard = (props) => {
     </CardBody>
     <CardFooter>
       <a href={props.url}>
-        {props.sourceName || 'Read More'}
+        {props.article.source.name || 'Read More'}
       </a>
     </CardFooter>
   </Card>
