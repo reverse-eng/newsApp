@@ -33,11 +33,11 @@ const NewsCard = (props) => {
           Read more &rarr;
       </Button>
     </CardBody>
-    {/* <CardFooter>
+    <CardFooter>
       <a href={props.url}>
         {props.sourceName || 'Read More'}
       </a>
-    </CardFooter> */}
+    </CardFooter>
   </Card>
   </CSSTransition>)
 }
