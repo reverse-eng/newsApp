@@ -29,13 +29,13 @@ const NewsCard = (props) => {
       </div>
       <p className="card-descrition">{props.description}</p>
       <Button 
-        href={props.url}>
+          href={`/blah/to-another-one`} >
           Read more &rarr;
       </Button>
     </CardBody>
     <CardFooter>
       <a href={props.url}>
-        {props.sourceName}
+        {props.sourceName || 'Read More'}
       </a>
     </CardFooter>
   </Card>

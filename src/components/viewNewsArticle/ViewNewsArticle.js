@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from "shards-react";
 import './viewnewsarticle.css'
 
 const ViewNewsArticle = (props) => {
+    console.log('this is loaded')
     const {Article} = props;
     return(
         <Container fluid className="news-article-container">

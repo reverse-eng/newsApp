@@ -7,6 +7,7 @@ import {
 import Home from './containers/Home';
 import Layout from './containers/Layout';
 import UKNews from './containers/UKNews';
+import NewsDetails from './containers/NewsDetails';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
 
@@ -16,16 +17,17 @@ const App = () => {
   return(
     <Layout >
       <Switch>
-        
+        <Route exact path="/">
+            <Home />
+        </Route>
         <Route path="/country/:id">
           <UKNews />
         </Route>
-        <Route path="/">
-          <Home />
+        <Route path="/:category/:slug" >
+          <NewsDetails />
         </Route>
-        
       </Switch>
-      </Layout>
+    </Layout>
 
   )
 }

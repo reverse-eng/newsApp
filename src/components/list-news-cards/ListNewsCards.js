@@ -33,7 +33,7 @@ const NewsCards = (props) => {
             imageSource = {newsItem.urlToImage}
             title = {newsItem.title}
             date = {formatDate(newsItem.publishedAt)}
-            sourceName = {newsItem.source.name}
+            sourceName = {newsItem.source?.name}
             description = {newsItem.description}
             url = {newsItem.url}
             
