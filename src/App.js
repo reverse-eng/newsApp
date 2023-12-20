@@ -23,7 +23,7 @@ const App = () => {
         <Route path="/country/:id">
           <UKNews />
         </Route>
-        <Route path="/:category/:slug" >
+        <Route path="/:slug" >
           <NewsDetails />
         </Route>
       </Switch>
