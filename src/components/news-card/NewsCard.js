@@ -29,7 +29,7 @@ const NewsCard = (props) => {
       </div>
       <p className="card-descrition">{props.description}</p>
       <Button 
-          href={props?.isOriginal ? props.post_slug : props.url} >
+          href={props?.article?.isOriginal ? props.article?.post_slug : props.article?.url} >
           Read more &rarr;
       </Button>
     </CardBody>
