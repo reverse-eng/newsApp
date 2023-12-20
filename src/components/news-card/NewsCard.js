@@ -29,15 +29,15 @@ const NewsCard = (props) => {
       </div>
       <p className="card-descrition">{props.description}</p>
       <Button 
-          href={`/blah/to-another-one`} >
+          href={props?.isOriginal ? props.post_slug : props.url} >
           Read more &rarr;
       </Button>
     </CardBody>
-    <CardFooter>
+    {/* <CardFooter>
       <a href={props.url}>
         {props.sourceName || 'Read More'}
       </a>
-    </CardFooter>
+    </CardFooter> */}
   </Card>
   </CSSTransition>)
 }
