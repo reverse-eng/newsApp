@@ -3,7 +3,6 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-
 import Home from './containers/Home';
 import Layout from './containers/Layout';
 import UKNews from './containers/UKNews';
@@ -28,7 +27,6 @@ const App = () => {
         </Route>
       </Switch>
     </Layout>
-
   )
 }
 

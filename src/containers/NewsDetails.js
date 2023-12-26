@@ -6,10 +6,14 @@ import { useParams } from "react-router-dom";
 const NewsDetails = () => {
     const [article, setArticle] = useState(null)
     const { slug } = useParams();
-    useEffect(async () =>{
-        const articleSlug = await utility.get(`/article/${slug}`)
-        setArticle(articleSlug.data[0])
-    }, []);
+    useEffect(() =>{
+        const getData = async () => {
+            return await utility.get(`/article/${slug}`)
+        }
+        getData().then((articleData) => {
+            setArticle(articleData.data[0])
+        })
+    }, [slug]);
 
     return <div>
 

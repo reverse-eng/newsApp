@@ -1,12 +1,37 @@
 import React from 'react';
-import { Container, Row, Col, Button } from "shards-react";
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import { Container, Row, Col } from "shards-react";
+import ReactHtmlParser  from 'react-html-parser';
+import {Helmet} from "react-helmet";
 import './viewnewsarticle.css'
 
 const ViewNewsArticle = ({ article }) => {
-    console.log('this is loaded')
-    // const {Article} = props;
+    
     return(
+        <>
+        <Helmet>
+            <title>{article.title}</title>
+            <link rel="canonical" href={`${window.location.href}`} />
+            <meta  name='description' content={article.description} />
+            {/* inline script elements */}
+            <script type="application/ld+json">{`
+                {
+                    "@context": "https://schema.org",
+                    "@type": "NewsArticle",
+                    "headline": "${article.title}",
+                    "image": {
+                      "@type": "ImageObject",
+                      "url": "${article.urlToImage}"
+                    },
+                    "datePublished": "${article.publishedAt}",
+                    "author": [
+                      {
+                        "@type": "Person",
+                        "name": "${article.author}"
+                      }
+                    ]
+                  }
+            `}</script>
+        </Helmet>
         <Container fluid className="news-article-container">
             
             <Row>
@@ -39,6 +64,7 @@ const ViewNewsArticle = ({ article }) => {
 
             {/* <Button onClick={props.BackButton} theme="dark"> <span className="back-arrow"> &larr;</span></Button> */}
         </Container>
+        </>
     )
 }
 
